@@ -2,28 +2,24 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>শেষ নিউজ Banner Maker</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <title>শেষ নিউজ - Banner Maker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>শেষ নিউজ Banner Maker</h2>
-  <div class="banner" id="banner">
-    <img src="assets/logo.png" class="logo" alt="শেষ নিউজ লোগো">
-    <h1 id="headline">এখানে শিরোনাম আসবে</h1>
-    <div id="images"></div>
-  </div>
-  <button onclick="downloadBanner()">Download Banner (PNG)</button>
+  <h1>শেষ নিউজ - Banner Maker</h1>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script>
-    function downloadBanner() {
-      html2canvas(document.getElementById("banner")).then(canvas => {
-        let link = document.createElement("a");
-        link.download = "banner.png";
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      });
-    }
-  </script>
+  <form id="bannerForm">
+    <input type="text" id="headline" placeholder="শিরোনাম দিন"><br>
+    <textarea id="text" placeholder="বর্ণনা লিখুন"></textarea><br>
+    <input type="text" id="image" placeholder="ছবির URL দিন"><br>
+    <button type="submit">Generate Banner</button>
+  </form>
+
+  <div id="preview">
+    <canvas id="bannerCanvas" width="800" height="400"></canvas><br>
+    <button id="downloadBtn">Download Banner</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
